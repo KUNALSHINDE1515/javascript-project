@@ -45,10 +45,16 @@ main{
     padding-right: 30px;
     text-align: justify;
     margin-top: 10px;
+    user-select: none;
 }
 
 #to-do-box li i {
     position: absolute;
     right: 10px;
     top: 10px;
+}
+.done {
+    text-decoration: line-through;
+    color: black;
+    background: #544040 !important;
 }
