@@ -19,11 +19,11 @@
 
     const Start_btn = document.getElementById('#start')
 
-    Start_btn.addEventListener('click', function(str) {
-        console.log(str, Date.now());
+    Start_btn.addEventListener('click', function() {
+        Start_btn.inert = "kunal"
     },false)
 
-    setInterval(Start_btn(),1000)
+    setInterval(Start_btn,1000)
 
     
 
