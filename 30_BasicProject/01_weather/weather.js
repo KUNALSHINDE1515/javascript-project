@@ -18,15 +18,15 @@ document.querySelector('.wind').innerHTML = data.wind.speed + ' km/h';
 
 
 if (data.weather[0].main == "Clouds") {
-    weatherIcon.src = "weather/clouds.png"
+    weatherIcon.src = "./weather/clouds.png"
 }else if(data.weather[0].main == "Clear"){
-    weatherIcon.src = "weather/clear.png"
+    weatherIcon.src = "./weather/clear.png"
 }else if(data.weather[0].main == "Rain"){
-    weatherIcon.src = "weather/rain.png"
+    weatherIcon.src = "./weather/rain.png"
 }else if(data.weather[0].main == "Drizzle"){
-    weatherIcon.src = "weather/drizzle.png"
+    weatherIcon.src = "./weather/drizzle.png"
 }else if(data.weather[0].main == "Mist"){
-    weatherIcon.src = "weather/mist.png"
+    weatherIcon.src = "./weather/mist.png"
 }
 
 }
