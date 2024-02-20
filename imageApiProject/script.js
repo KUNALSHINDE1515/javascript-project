@@ -1,5 +1,59 @@
-('https://fonts.googleapis.com/css2?family=Anta&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+const accesKey = "ZNLCCXheaRbcrt46IDjJaPSe5ZfjFmvWmM_ow5t0RPs";
 
-*{
+const formEl = document.querySelector('form');
+const inputEl = document.getElementById('search-input');
+const searchResults = document.querySelector(".search-results");
+const showMore = document.querySelector("#show-more-button")
 
+let inputData = ""
+let page = 1;
+
+
+async function searchImages() {
+    inputData = inputEl.value;
+    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accesKey}`
+
+    const response = await fetch(url)
+    const data = await response.json()
+
+    const results = data.results
+
+    if (page ===1) {
+        searchResults.innerHTML = "";
+    }
+
+    results.map((result) =>{
+        const imageWrapper = document.createElement('div')
+        imageWrapper.classList.add("search-result")
+        const image = document.createElement('img')
+        image.src =result.urls.small
+        image.alt = result.alt_description
+
+        const imageLink = document.createElement('a')
+        imageLink.href = result.links.html
+        imageLink.target = "_blank"
+        imageLink.textContent = result.alt_description
+
+        imageWrapper.appendChild(image)
+        imageWrapper.appendChild(imageLink)
+        searchResults.appendChild(imageWrapper)
+    });
+
+    page++;
+    if (page > 1) {
+        showMore.style.display = "block"
+    }
+    
 }
+
+formEl.addEventListener("submit", (event) => {
+    event.preventDefault()
+    page = 1;
+    searchImages()
+})
+
+showMore.addEventListener("click", () => {
+    searchImages()
+})
+// 
+searchImages()
